@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import products from '../data';
 import { addItem, removeItem } from '../store';
 
-const Product = ({ item, prodClick }) => {
+const Product = ({ item, prodClick, cartRemove }) => {
   const { name, price, product_type, image, id } = item;
-
   return (
     <div className="product__card">
       <h5>{name}</h5>
@@ -15,16 +14,24 @@ const Product = ({ item, prodClick }) => {
       <button onClick={evt => prodClick({ name, price, id })}>
         Add to Cart
       </button>
+      <button onClick={evt => cartRemove({ id })}>Remove Item from Cart</button>
     </div>
   );
 };
 
-const ProductList = ({ prodClick, cart }) => {
-  console.log(cart, '<><>><>');
+const ProductList = ({ prodClick, cartRemove, cart }) => {
+  console.log(cart, 'what is inside of the cart atm');
   return (
     <ul>
       {products.map(item => {
-        return <Product key={item.id} item={item} prodClick={prodClick} />;
+        return (
+          <Product
+            key={item.id}
+            item={item}
+            prodClick={prodClick}
+            cartRemove={cartRemove}
+          />
+        );
       })}
     </ul>
   );
@@ -34,8 +41,10 @@ const mapState = state => ({ cart: state.cart });
 const mapDispatch = dispatch => {
   return {
     prodClick(payload) {
-      console.log(payload, '<><><><>');
       dispatch(addItem(payload));
+    },
+    cartRemove(item) {
+      dispatch(removeItem(item));
     }
   };
 };
