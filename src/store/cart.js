@@ -18,9 +18,9 @@ export const removeItem = item => ({ type: REMOVE_FROM_CART, item });
 export default function(state = initialState, action) {
   switch (action.type) {
     case ADD_TO_CART:
-      return action.item;
+      return [...state, action.item];
     case REMOVE_FROM_CART:
-      return action.item;
+      return [...state.filter(item => item.id !== action.item.id)];
     default:
       return state;
   }

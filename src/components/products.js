@@ -4,8 +4,7 @@ import products from '../data';
 import { addItem, removeItem } from '../store';
 
 const Product = ({ item, prodClick }) => {
-  const { name, price, product_type, image } = item;
-  console.log(prodClick);
+  const { name, price, product_type, image, id } = item;
 
   return (
     <div className="product__card">
@@ -13,12 +12,15 @@ const Product = ({ item, prodClick }) => {
       <h5>{`$${price.toFixed(2)}`}</h5>
       <h5>{product_type}</h5>
       <img src={image} alt="" />
-      <button onClick={evt => prodClick(name, price)}>Add to Cart</button>
+      <button onClick={evt => prodClick({ name, price, id })}>
+        Add to Cart
+      </button>
     </div>
   );
 };
 
-const ProductList = ({ prodClick }) => {
+const ProductList = ({ prodClick, cart }) => {
+  console.log(cart, '<><>><>');
   return (
     <ul>
       {products.map(item => {
@@ -31,9 +33,9 @@ const ProductList = ({ prodClick }) => {
 const mapState = state => ({ cart: state.cart });
 const mapDispatch = dispatch => {
   return {
-    prodClick(name, price) {
-      console.log(price, name, '<><><><>');
-      //dispatch(addItem());
+    prodClick(payload) {
+      console.log(payload, '<><><><>');
+      dispatch(addItem(payload));
     }
   };
 };
