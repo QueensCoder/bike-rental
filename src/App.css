@@ -47,3 +47,28 @@
 .list--spacer {
   margin-top: 15%;
 }
+
+.item__card {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.list--flow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.btn-checkout--center {
+  align-self: center;
+}
+
+body {
+  overflow: scroll;
+}
