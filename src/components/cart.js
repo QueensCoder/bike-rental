@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { removeItem } from '../store';
+import { Button, Card, Row, Col } from 'react-materialize';
 
 const Item = ({ item }, i) => {
   const { image, price, name } = item;
@@ -16,7 +17,7 @@ const Item = ({ item }, i) => {
 const Cart = ({ cart }) => {
   console.log('got here<><>');
   return (
-    <div>
+    <div className="list--spacer">
       <h2>
         Total: ${cart.reduce((prev, curr) => prev + curr.price, 0).toFixed(2)}
       </h2>

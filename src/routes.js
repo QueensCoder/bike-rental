@@ -6,7 +6,7 @@ import { ProductsList, Cart } from './components';
 const Routes = props => {
   return (
     <div className="App">
-      <header className="App-header" />
+      <header />
       <Switch>
         <Route exact path="/" component={ProductsList} />
         <Route path="/cart" component={Cart} />
