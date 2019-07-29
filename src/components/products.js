@@ -11,7 +11,7 @@ const Product = ({ item, prodClick, cartRemove }) => {
       <h5>{`$${price.toFixed(2)}`}</h5>
       <h5>{product_type}</h5>
       <img src={image} alt="" />
-      <button onClick={evt => prodClick({ name, price, id })}>
+      <button onClick={evt => prodClick({ name, price, id, image })}>
         Add to Cart
       </button>
       <button onClick={evt => cartRemove({ id })}>Remove Item from Cart</button>

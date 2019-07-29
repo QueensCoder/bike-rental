@@ -1,14 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Route, Switch } from 'react-router-dom';
-import { ProductsList } from './components';
+import { ProductsList, Cart } from './components';
 
 const Routes = props => {
   return (
     <div className="App">
       <header className="App-header" />
       <Switch>
-        <Route path="/" component={ProductsList} />
+        <Route exact path="/" component={ProductsList} />
+        <Route path="/cart" component={Cart} />
       </Switch>
     </div>
   );
